@@ -2,23 +2,26 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
-            steps {
-            echo 'Hello World..'
-            script{
-             properties([githubProjectProperty(displayName: '', projectUrlStr: 'https://github.com/goyal20nikita/jenkins_first_psi_pgm/'), gitLabConnection(gitLabConnection: '', jobCredentialId: ''), pipelineTriggers([githubPush()])])
-                
-            }
+        stage('Build') 
+        {
+            steps 
+            {
+               echo 'Hello World..'
+               script{
+                    properties([githubProjectProperty(displayName: '', projectUrlStr: 'https://github.com/goyal20nikita/jenkins_first_psi_pgm/'), gitLabConnection(gitLabConnection: '', jobCredentialId: ''), pipelineTriggers([githubPush()])])
+                     }
                 
             }
         }
-        stage('Run') {
+        stage('Run')
+        {
             steps {
             
-            sh ''' python3 file.py '''
-             
+                   sh ''' python3 file.py '' '
+                  }
         }
-        stage('Report') {
+        stage('Report')
+        {
             steps {
              
              publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
