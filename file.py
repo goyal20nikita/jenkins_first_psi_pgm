@@ -18,7 +18,7 @@ env = jinja2.Environment(loader=jinja2.FileSystemLoader(searchpath=''))
 template = env.get_template('index.html')
 html = template.render(my_table=styler.render())
 
-# Plot
+# Plots
 ax = df.plot.bar()
 fig = ax.get_figure()
 fig.savefig('plot.svg')
